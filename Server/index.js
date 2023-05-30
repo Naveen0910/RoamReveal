@@ -22,7 +22,7 @@ app.use(express.json())
 
 // router middleware
 app.use("/api", authRoutes);
-app.use("/api" , postRoutes)
+app.use("/api",postRoutes)
 
 /* Starting a server */
 app.listen(process.env.PORT , ()=> {

@@ -51,6 +51,8 @@ export const register = async(req,res) => {
             username,
             email,
             password : hashedPassword,
+            post:[],
+            image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/400px-Empire_State_Building_%28aerial_view%29.jpg"
         }
         console.log(userData)
 
@@ -60,11 +62,7 @@ export const register = async(req,res) => {
 
         /* Sending Response */
         res.json({
-            userData : {
-                name : newUser.name,
-                username : newUser.username,
-                email : newUser.email,
-            },
+            newUser,
             jwt_token : token,
         })
 

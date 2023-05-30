@@ -1,11 +1,10 @@
 import express from 'express'
-import formidable from 'express-formidable'
+import { create , readPostByPid, readPostByUid,updateByPid} from '../controllers/post.js';
+const router = express.Router();
 
-import { requireSignin } from '../middlewares/auth.js'
-import {createPost} from '../controllers/post.js'
-
-const router = express.Router()
-
-router.post('/uploads' , requireSignin ,formidable() , createPost)
+router.post('/upload' , create)
+router.get("/:pid" , readPostByPid)
+router.get("/user/:uid" , readPostByUid)
+router.put('/:pid' , updateByPid)
 
 export default router

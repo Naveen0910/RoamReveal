@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const userModel = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name : {
         type:String,
         required:true,
@@ -29,16 +29,23 @@ const userModel = new mongoose.Schema({
         trim : true,
         min: 6,
         max: 64,
+        required:true,
+    },
+
+    image :{
+        type:String,
+        required:true
     },
 
     post : [
         {
             type:mongoose.Types.ObjectId , 
-            ref : 'Post'
+            ref : 'Post',
+            required:true,
         }
     ]
 },
     {timestamps:true}
 )
 
-export default mongoose.model("User" , userModel)
+export default mongoose.model("User" , userSchema)

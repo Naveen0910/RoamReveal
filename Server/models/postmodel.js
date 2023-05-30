@@ -1,32 +1,29 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const postSchema = new mongoose.Schema({
-    photo:{
-        data : Buffer,
-        contentType : String,
-    },
-    likes:{
-        type:Number,
-        default:0,
-    },
-    dislikes:{
-        type:Number,
-        default:0,
-    },
-    comments:[
-        {
-            type:String,
-            user : {type: mongoose.Schema.Types.ObjectId , ref:"User"},
-        }
-    ],
-    user:{type:mongoose.Schema.Types.ObjectId , ref:'User'}
-},
-{timestamps:true},
-)
 
-postSchema.pre('find', function (next) {
-    this.populate('user');
-    next();
-  });
+const postSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
 
-export default mongoose.model('Post' , postSchema)
+    description: {
+      type: String,
+    },
+
+    image: {
+      type: String,
+      required: true,
+    },
+
+    creator: {
+      type:mongoose.Types.ObjectId,
+      required:true,
+      ref:'User'
+    },
+  },
+  { timestamps: true }
+);
+
+export default mongoose.model("Post", postSchema);
