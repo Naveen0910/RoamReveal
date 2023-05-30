@@ -29,7 +29,14 @@ const userModel = new mongoose.Schema({
         trim : true,
         min: 6,
         max: 64,
-    }
+    },
+
+    post : [
+        {
+            type:mongoose.Types.ObjectId , 
+            ref : 'Post'
+        }
+    ]
 },
     {timestamps:true}
 )

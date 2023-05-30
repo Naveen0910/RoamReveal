@@ -2,7 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose'
 import morgan from 'morgan'
+
 import authRoutes from './routes/auth.js'
+import postRoutes from './routes/post.js'
 
 /* Loading Env Variables */
 dotenv.config();
@@ -20,6 +22,7 @@ app.use(express.json())
 
 // router middleware
 app.use("/api", authRoutes);
+app.use("/api" , postRoutes)
 
 /* Starting a server */
 app.listen(process.env.PORT , ()=> {
